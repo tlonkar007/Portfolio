@@ -1,551 +1,592 @@
-<!--
-ATS-Friendly Portfolio for Tarang .S. Lonkar
-Resume source: :contentReference[oaicite:0]{index=0}
-Single-file HTML with internal CSS & JS. Bootstrap via CDN is allowed per user request.
-Update placeholders marked with TODO.
--->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Tarang .S. Lonkar • Data Science | Machine Learning | Analytics</title>
-  <meta name="description" content="Portfolio of Tarang .S. Lonkar — Data Science, Machine Learning, Predictive Analytics, Python, SQL, Tableau, Power BI. Projects: Diabetes Predictor, House Price Predictor, GenAI Language Learning Roadmap." />
-  <meta name="keywords" content="Tarang Lonkar, Data Scientist, Machine Learning Engineer, AI, Applied Machine Intelligence, Predictive Modeling, Classification, Regression, Clustering, Python, SQL, NumPy, Pandas, Scikit-learn, Matplotlib, Seaborn, Tableau, Power BI, Flask, GenAI, Data Visualization, Business Analytics, Marketing Analytics, BI, Statistical Analysis, MPS Analytics, IIIT Bangalore" />
-  <meta name="theme-color" content="#0f172a" />
-  <meta property="og:title" content="Tarang .S. Lonkar • Data Science & ML Portfolio" />
-  <meta property="og:description" content="Projects, skills, and achievements across AI/ML, analytics, and BI." />
-  <meta property="og:type" content="website" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarang S. Lonkar - Data Science Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+        }
 
-  <!-- JSON-LD for Recruiters / ATS -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Tarang .S. Lonkar",
-    "jobTitle": "Data Analyst | Machine Learning Enthusiast",
-    "email": "mailto:tlonkar007@gmail.com",
-    "telephone": "+91-9146339988",
-    "url": "https://example.com",
-    "sameAs": [
-      "https://www.linkedin.com/in/tarang-lonkar-2383801b2/",
-      "https://github.com/dashboard"
-    ],
-    "alumniOf": [
-      {
-        "@type": "CollegeOrUniversity",
-        "name": "IIIT Bangalore",
-        "description": "Post Graduate Program in Data Science – Business Analytics"
-      },
-      {
-        "@type": "CollegeOrUniversity",
-        "name": "SVPM’s Institute of Management, SPPU Pune",
-        "description": "MBA – Marketing"
-      }
-    ],
-    "knowsAbout": [
-      "Data Science", "Machine Learning", "AI", "Applied Machine Intelligence", "Statistical Analysis",
-      "Python", "SQL", "NumPy", "Pandas", "Matplotlib", "Seaborn", "Scikit-learn",
-      "Tableau", "Power BI", "Business Intelligence", "Predictive Modeling", "Classification",
-      "Regression", "Clustering", "Data Visualization", "Flask", "GenAI", "Marketing Analytics"
-    ]
-  }
-  </script>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
 
-  <!-- Bootstrap (allowed per user) -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+        .navbar {
+            background-color: var(--secondary-color);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
 
-  <!-- Internal CSS -->
-  <style>
-    :root{
-      --bg:#0f172a;           /* slate-900 */
-      --card:#111827;         /* gray-900 */
-      --muted:#94a3b8;        /* slate-400 */
-      --text:#e5e7eb;         /* gray-200 */
-      --brand:#22d3ee;        /* cyan-400 */
-      --brand-2:#a78bfa;      /* violet-400 */
-      --accent:#10b981;       /* emerald-500 */
-      --chip:#1f2937;         /* gray-800 */
-      --ring: 0 0 0 3px rgba(34, 211, 238, .35);
-    }
-    html { scroll-behavior: smooth; }
-    body{
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-      background: radial-gradient(1200px 600px at 20% -10%, rgba(34,211,238,.07), transparent),
-                  radial-gradient(1000px 500px at 120% 10%, rgba(167,139,250,.07), transparent),
-                  var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-    }
-    .nav-link{ color:var(--muted); }
-    .nav-link.active, .nav-link:hover{ color:var(--brand); }
-    .btn-brand{
-      background: linear-gradient(135deg, var(--brand), var(--brand-2));
-      border:none; color:#0b1020; font-weight:700;
-      box-shadow: 0 8px 30px rgba(137, 207, 240, .25);
-    }
-    .btn-ghost{
-      border:1px solid #263046; color: var(--text);
-      background: transparent;
-    }
-    .hero{
-      padding: 7rem 0 3rem;
-      background:
-        radial-gradient(800px 400px at 70% 0, rgba(34,211,238,.08), transparent);
-    }
-    .headline{
-      font-weight:800; letter-spacing:-.02em;
-      font-size: clamp(2rem, 1.2rem + 3.5vw, 3.6rem);
-    }
-    .subtitle{ color: var(--muted); font-size:1.1rem; }
-    .chip{
-      display:inline-flex; align-items:center; gap:.5rem;
-      padding:.35rem .7rem; border-radius:999px; background: var(--chip);
-      border:1px solid #263046; color:#d1d5db; font-weight:600; margin:.25rem;
-      white-space:nowrap;
-    }
-    .card{
-      background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01));
-      border:1px solid #243045; color: var(--text);
-      border-radius:1.25rem; overflow:hidden;
-    }
-    .card:hover{ border-color:#34507a; transform: translateY(-2px); transition:.2s ease; }
-    .section-title{
-      font-weight:800; letter-spacing:-.02em; font-size: clamp(1.2rem, .9rem + 1.5vw, 2rem);
-    }
-    .muted{ color: var(--muted); }
-    .avatar{
-      width:140px; height:140px; border-radius:999px; border:2px solid #263046;
-      background: #0b1020 center/cover no-repeat;
-      box-shadow: 0 10px 40px rgba(167,139,250,.15);
-    }
-    .avatar::after{
-      content:""; position:absolute; inset:-6px; border-radius:999px;
-      background: conic-gradient(from 180deg, var(--brand), var(--brand-2), var(--brand));
-      filter: blur(18px); opacity:.12; z-index:-1;
-    }
-    .anchor-offset{ scroll-margin-top: 90px; }
-    .icon{ width:20px; height:20px; vertical-align:-3px; }
-    .badge-skill{
-      background:#0e1627; color:#dbeafe; border:1px solid #1e293b; border-radius:10px; padding:.4rem .6rem; font-weight:600;
-    }
-    .timeline{
-      position:relative; padding-left:1.25rem; border-left:2px dashed #2a3a59;
-    }
-    .timeline .t{
-      margin:0 0 1.25rem 0;
-    }
-    .timeline .t .role{ font-weight:700; }
-    .project-links a{ text-decoration:none; }
-    .kbd{
-      background:#0b1222; border:1px solid #1f2b46; border-radius:6px; padding:.1rem .35rem; font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size:.85rem;
-    }
-    .footer{
-      border-top:1px solid #1f2b46; color: var(--muted);
-    }
-    input, textarea{
-      background:#0b1222; border:1px solid #263046; color:var(--text); border-radius:.75rem; padding:.75rem 1rem;
-    }
-    input:focus, textarea:focus{ outline:none; box-shadow: var(--ring); border-color:#3a6ea7; }
-    a{ color:#7dd3fc; }
-    a:hover{ color:#22d3ee; }
-    .sr-only{ position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
-    .divider{ height:1px; background:#1f2b46; margin: 2rem 0; }
-    /* Print/ATS friendliness */
-    @media print{
-      .btn, .nav, .avatar, .project-links, .social { display:none !important; }
-      body{ background:#fff; color:#000; }
-      .card{ border:1px solid #ccc; }
-      a{ color:#000; text-decoration:underline; }
-    }
-  </style>
+        .navbar-brand {
+            font-weight: 700;
+            color: white !important;
+        }
+
+        .nav-link {
+            color: rgba(255, 255, 255, 0.8) !important;
+            font-weight: 500;
+            margin: 0 10px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: white !important;
+            transform: translateY(-2px);
+        }
+
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 80px 0;
+            margin-bottom: 30px;
+        }
+
+        .hero-content {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            margin-right: 40px;
+            margin-bottom: 20px;
+        }
+
+        .hero-text h1 {
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+            margin-right: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+        section {
+            padding: 60px 0;
+            background-color: white;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .section-title {
+            color: var(--secondary-color);
+            font-weight: 700;
+            margin-bottom: 30px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 60px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+
+        .card {
+            border: none;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            margin-bottom: 20px;
+            height: 100%;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-header {
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: 600;
+            border-radius: 8px 8px 0 0 !important;
+        }
+
+        .skill-badge {
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            padding: 8px 15px;
+            border-radius: 20px;
+            margin: 5px;
+            display: inline-block;
+            font-size: 0.9rem;
+            font-weight: 500;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .skill-badge.primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .skill-badge.secondary {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+
+        .skill-badge.accent {
+            background-color: var(--accent-color);
+            color: white;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 10px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: var(--primary-color);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-bottom: 30px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -30px;
+            top: 5px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            border: 3px solid white;
+        }
+
+        .project-card {
+            border-left: 4px solid var(--primary-color);
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            border-left: 4px solid var(--accent-color);
+            transform: translateX(5px);
+        }
+
+        .project-link {
+            color: var(--primary-color);
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .project-link:hover {
+            color: var(--accent-color);
+            text-decoration: underline;
+        }
+
+        .footer {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+        }
+
+        .footer a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .keyword {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .profile-img {
+                margin-right: 0;
+                margin-bottom: 30px;
+            }
+
+            .social-icons {
+                justify-content: center;
+            }
+        }
+    </style>
 </head>
-<body data-bs-spy="scroll" data-bs-target="#topnav" data-bs-offset="90" tabindex="0">
-  <!-- Top Navigation -->
-  <nav id="topnav" class="navbar navbar-expand-lg fixed-top" style="backdrop-filter: blur(8px); background: rgba(15, 23, 42, .65); border-bottom:1px solid #1f2b46;">
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">TARANG S. LONKAR</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#skills">Skills</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#projects">Projects</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#experience">Experience</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#education">Education</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <img src="profile.jpeg" alt="Tarang S. Lonkar" class="profile-img" id="profile-picture">
+                <div class="hero-text">
+                    <h1>TARANG S. LONKAR</h1>
+                    <p>Data Scientist | Machine Learning Engineer | Business Analyst</p>
+                    <p>Leveraging strong analytical skills, statistical knowledge, and expertise in <span class="keyword">Python</span>, <span class="keyword">SQL</span>, <span class="keyword">machine learning</span>, and <span class="keyword">data visualization</span> to extract meaningful insights and support data-driven decision-making.</p>
+                    <div class="social-icons">
+                        <a href="https://www.linkedin.com/in/tarang-lonkar-2383801b2/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://github.com/dashboard" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="mailto:tlonkar007@gmail.com"><i class="fas fa-envelope"></i></a>
+                        <a href="tel:9146339988"><i class="fas fa-phone"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
     <div class="container">
-      <a class="navbar-brand fw-bold" href="#" style="color:#e2e8f0;">Tarang<span style="color:var(--brand);">.</span>Lonkar</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navContent" aria-controls="navContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon" style="filter: invert(1)"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navContent">
-        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-          <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
-          <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
-          <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
-          <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
-          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-          <li class="nav-item ms-2"><a class="btn btn-sm btn-ghost px-3" href="./Tarang_Resume.pdf" target="_blank" rel="noopener">Download Resume</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+        <!-- About Section -->
+        <section id="about" class="mb-5">
+            <h2 class="section-title">About Me</h2>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>I am a passionate <span class="keyword">Data Science</span> professional with expertise in <span class="keyword">machine learning</span>, <span class="keyword">predictive modeling</span>, and <span class="keyword">data visualization</span>. My background in business administration combined with technical skills in <span class="keyword">Python</span>, <span class="keyword">SQL</span>, and <span class="keyword">AI/ML</span> allows me to bridge the gap between technical and business domains.</p>
+                    <p>I specialize in developing <span class="keyword">end-to-end data solutions</span> including <span class="keyword">data collection</span>, <span class="keyword">cleaning</span>, <span class="keyword">analysis</span>, <span class="keyword">model building</span>, and <span class="keyword">deployment</span>. My projects demonstrate my ability to apply <span class="keyword">statistical analysis</span> and <span class="keyword">machine learning algorithms</span> to solve real-world problems.</p>
+                    <p>With experience in both technical and business roles, I bring a unique perspective to <span class="keyword">data-driven decision making</span> and <span class="keyword">business intelligence</span>.</p>
+                </div>
+            </div>
+        </section>
 
-  <!-- Hero -->
-  <header class="hero">
-    <div class="container">
-      <div class="row g-4 align-items-center">
-        <div class="col-lg-8">
-          <div class="mb-3">
-            <span class="chip"><span class="sr-only">Role:</span>Data Science • Machine Learning • AI</span>
-            <span class="chip">Python • SQL • Scikit-learn</span>
-            <span class="chip">Tableau • Power BI</span>
-          </div>
-          <h1 class="headline">Turning data into decisions with <span style="background:linear-gradient(135deg,var(--brand),var(--brand-2)); -webkit-background-clip:text; background-clip:text; color:transparent;">Machine Learning</span> & <span style="background:linear-gradient(135deg,var(--brand-2),var(--brand)); -webkit-background-clip:text; background-clip:text; color:transparent;">Analytics</span></h1>
-          <p class="subtitle mt-3">
-            Data Analyst with hands-on experience in predictive modeling, classification, regression, clustering, statistical analysis, GenAI, and BI dashboards. Passionate about business impact and storytelling with data.
-          </p>
-          <div class="d-flex gap-2 mt-4">
-            <a href="#projects" class="btn btn-brand btn-lg px-4">View ML Projects</a>
-            <a href="#contact" class="btn btn-ghost btn-lg px-4">Hire for Data Science</a>
-          </div>
-          <div class="mt-4 social">
-            <a class="me-3" href="https://www.linkedin.com/in/tarang-lonkar-2383801b2/" target="_blank" rel="noopener" aria-label="LinkedIn">
-              <!-- LinkedIn SVG -->
-              <svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.5 8.5H4.5V24H.5zM8.5 8.5H12.2V10.3H12.3C12.8 9.4 14 8.4 15.8 8.4 20 8.4 20.8 11.1 20.8 15.1V24H16.8V15.9C16.8 13.9 16.8 11.4 14.2 11.4 11.6 11.4 11.2 13.6 11.2 15.7V24H7.2V8.5H8.5Z"/></svg>
-              <span class="ms-1">LinkedIn</span>
-            </a>
-            <a class="me-3" href="https://github.com/dashboard" target="_blank" rel="noopener" aria-label="GitHub">
-              <!-- GitHub SVG -->
-              <svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5A12 12 0 0 0 0 12.6c0 5.3 3.4 9.8 8.2 11.4.6.1.8-.3.8-.6v-2c-3.3.8-4-1.6-4-1.6-.5-1.4-1.3-1.8-1.3-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.9 1.3 1.9 1.3 1.1 1.9 3 1.3 3.7 1 .1-.8.4-1.3.7-1.6-2.7-.3-5.6-1.4-5.6-6.3 0-1.4.5-2.5 1.3-3.4-.1-.3-.6-1.6.1-3.3 0 0 1-.3 3.4 1.3a11.9 11.9 0 0 1 6.2 0c2.4-1.6 3.4-1.3 3.4-1.3.7 1.7.3 3 .2 3.3.8.9 1.3 2 1.3 3.4 0 4.9-2.9 6-5.7 6.3.4.3.8 1 .8 2v3c0 .3.2 .7.8 .6A12.1 12.1 0 0 0 24 12.6 12 12 0 0 0 12 .5Z"/></svg>
-              <span class="ms-1">GitHub</span>
-            </a>
-            <a href="./Tarang_Resume.pdf" class="" target="_blank" rel="noopener">Resume (PDF)</a>
-          </div>
-        </div>
-        <div class="col-lg-4 text-lg-end">
-          <!-- TODO: Replace background-image URL with your portfolio picture -->
-          <div class="position-relative d-inline-block">
-            <div class="avatar position-relative" id="avatar" style="background-image:url('profile.jpeg');">
+        <!-- Skills Section -->
+        <section id="skills" class="mb-5">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-header">
+                            Programming & Data Tools
+                        </div>
+                        <div class="card-body">
+                            <span class="skill-badge primary">Python</span>
+                            <span class="skill-badge primary">SQL</span>
+                            <span class="skill-badge primary">Excel</span>
+                            <span class="skill-badge">NumPy</span>
+                            <span class="skill-badge">Pandas</span>
+                            <span class="skill-badge">Matplotlib</span>
+                            <span class="skill-badge">Seaborn</span>
+                            <span class="skill-badge">Scikit-learn</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-header">
+                            Analytics & BI Tools
+                        </div>
+                        <div class="card-body">
+                            <span class="skill-badge secondary">Tableau</span>
+                            <span class="skill-badge secondary">Power BI</span>
+                            <span class="skill-badge secondary">Business Intelligence</span>
+                            <span class="skill-badge">Data Visualization</span>
+                            <span class="skill-badge">Data Storytelling</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-header">
+                            Machine Learning & AI
+                        </div>
+                        <div class="card-body">
+                            <span class="skill-badge accent">Machine Learning</span>
+                            <span class="skill-badge accent">Generative AI</span>
+                            <span class="skill-badge">Classification</span>
+                            <span class="skill-badge">Regression</span>
+                            <span class="skill-badge">Clustering</span>
+                            <span class="skill-badge">Predictive Modeling</span>
+                            <span class="skill-badge">Statistical Analysis</span>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="mt-3 muted small">Add your photo: replace the inline <span class="kbd">background-image</span> URL in <span class="kbd">#avatar</span>.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </header>
+        </section>
 
-  <!-- About -->
-  <section id="about" class="anchor-offset">
-    <div class="container">
-      <div class="row g-4">
-        <div class="col-lg-8">
-          <h2 class="section-title">About</h2>
-          <p>
-            I’m <strong>Tarang S. Lonkar</strong>, a Data Science and Business Analytics professional skilled in <strong>Python</strong>, <strong>SQL</strong>, <strong>Machine Learning</strong> (classification, regression, clustering), <strong>Predictive Modeling</strong>, <strong>Statistical Analysis</strong>, and <strong>Data Visualization</strong>. I build end-to-end solutions—data wrangling with <em>NumPy/Pandas</em>, feature engineering, model selection with <em>scikit-learn</em>, evaluation (AUC/F1/Precision-Recall), and insight communication through dashboards in <em>Tableau/Power BI</em>.
-          </p>
-          <p class="muted">
-            Domain experience across <strong>Marketing Analytics</strong>, <strong>Real Estate</strong>, and <strong>Software Solutions</strong>. Comfortable with <strong>GenAI</strong> experimentation, <strong>Flask</strong> microservices, and <strong>business storytelling</strong>.
-          </p>
-        </div>
-        <div class="col-lg-4">
-          <div class="card p-3 h-100">
-            <div class="d-flex align-items-center gap-2">
-              <span class="badge-skill">Open to Roles</span>
-              <span class="badge-skill">Data Analyst</span>
-              <span class="badge-skill">ML/AI</span>
+        <!-- Projects Section -->
+        <section id="projects" class="mb-5">
+            <h2 class="section-title">Projects</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card project-card">
+                        <div class="card-body">
+                            <h5 class="card-title">Diabetes Predictor</h5>
+                            <p class="card-text">Developed a <span class="keyword">machine learning model</span> to forecast the likelihood of an individual developing diabetes in the future using <span class="keyword">DecisionTreeClassifier</span>.</p>
+                            <p><strong>Tools:</strong> Python, Scikit-learn, Pandas, Matplotlib</p>
+                            <a href="https://taranglonkar.pythonanywhere.com" target="_blank" class="project-link">View Project <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card project-card">
+                        <div class="card-body">
+                            <h5 class="card-title">House Price Predictor</h5>
+                            <p class="card-text">Built a <span class="keyword">machine learning model</span> to predict house prices using <span class="keyword">linear regression</span> techniques.</p>
+                            <p><strong>Tools:</strong> Python, Scikit-learn, LinearRegression</p>
+                            <a href="https://tlonkar007.pythonanywhere.com" target="_blank" class="project-link">View Project <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card project-card">
+                        <div class="card-body">
+                            <h5 class="card-title">GenAI Language Learning Road Map</h5>
+                            <p class="card-text">Developed a <span class="keyword">Generative AI</span> model to create a structured language learning roadmap with daily, monthly, and long-term milestones, aimed at enhancing learning efficiency and personalization.</p>
+                            <p><strong>Tools:</strong> PyCharm, Python, Genai, Pandas, Flask_app</p>
+                            <a href="https://lonkartarang.pythonanywhere.com" target="_blank" class="project-link">View Project <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="divider"></div>
-            <ul class="mb-0">
-              <li><strong>Phone:</strong> <a href="tel:+919146339988">+91 9146339988</a></li>
-              <li><strong>Email:</strong> <a href="mailto:tlonkar007@gmail.com">tlonkar007@gmail.com</a></li>
-              <li><strong>Location:</strong> Pune, India (open to relocate)</li>
-              <li><strong>LinkedIn:</strong> <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/tarang-lonkar-2383801b2/">/in/tarang-lonkar-2383801b2/</a></li>
-              <li><strong>GitHub:</strong> <a target="_blank" rel="noopener" href="https://github.com/dashboard">github.com/dashboard</a> <!-- TODO: replace with public profile URL --></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+        </section>
 
-  <!-- Skills -->
-  <section id="skills" class="py-5 anchor-offset">
-    <div class="container">
-      <h2 class="section-title mb-4">Skills & Keywords (ATS)</h2>
-      <div class="row g-3">
-        <div class="col-lg-4">
-          <div class="card p-3 h-100">
-            <h3 class="h5">Programming & Data Tools</h3>
-            <p class="muted mb-2">Python · SQL · Excel · NumPy · Pandas · Matplotlib · Seaborn · scikit-learn · Flask</p>
-            <div class="d-flex flex-wrap">
-              <span class="chip">Python</span><span class="chip">SQL</span><span class="chip">NumPy</span><span class="chip">Pandas</span>
-              <span class="chip">Matplotlib</span><span class="chip">Seaborn</span><span class="chip">scikit-learn</span><span class="chip">Flask</span>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="card p-3 h-100">
-            <h3 class="h5">Analytics & BI</h3>
-            <p class="muted mb-2">Tableau · Power BI · Business Intelligence · Data Visualization · Storytelling</p>
-            <div class="d-flex flex-wrap">
-              <span class="chip">Tableau</span><span class="chip">Power BI</span><span class="chip">BI</span><span class="chip">Dashboards</span>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="card p-3 h-100">
-            <h3 class="h5">Machine Learning</h3>
-            <p class="muted mb-2">Classification · Regression · Clustering · Predictive Modeling · Model Evaluation</p>
-            <div class="d-flex flex-wrap">
-              <span class="chip">Classification</span><span class="chip">Regression</span><span class="chip">Clustering</span>
-              <span class="chip">Predictive Modeling</span><span class="chip">Model Deployment</span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <p class="mt-3 small muted">Additional: Marketing Analytics, Statistical Analysis, Business Analytics, GenAI, Flask microservices, Data Storytelling.</p>
-    </div>
-  </section>
-
-  <!-- Projects -->
-  <section id="projects" class="py-5 anchor-offset">
-    <div class="container">
-      <div class="d-flex align-items-center justify-content-between">
-        <h2 class="section-title mb-0">Highlighted Projects</h2>
-        <div class="muted small">Filter:
-          <button class="btn btn-sm btn-ghost ms-2" data-filter="all">All</button>
-          <button class="btn btn-sm btn-ghost" data-filter="ml">ML</button>
-          <button class="btn btn-sm btn-ghost" data-filter="dash">Dashboards</button>
-          <button class="btn btn-sm btn-ghost" data-filter="genai">GenAI</button>
-        </div>
-      </div>
-
-      <div class="row g-4 mt-1" id="projectGrid">
-        <!-- Diabetes Predictor -->
-        <div class="col-md-6 col-lg-4 project-card" data-tags="ml">
-          <div class="card p-3 h-100">
-            <div class="small muted">Classification • Predictive Risk Scoring</div>
-            <h3 class="h5 mt-2">Diabetes Risk Prediction Model</h3>
-            <p class="mb-2">Built an ML pipeline to forecast diabetes risk using <strong>Pandas</strong> for preprocessing and <strong>scikit-learn</strong> (e.g., <code>DecisionTreeClassifier</code>) for modeling; visualized results with <strong>Matplotlib</strong>.</p>
-            <div class="project-links d-flex gap-3">
-              <a href="#" onclick="alert('TODO: Add GitHub repo link')" class="link">Code</a>
-              <a href="#" onclick="alert('TODO: Add demo link')" class="link">Demo</a>
-            </div>
-            <div class="mt-2 d-flex flex-wrap gap-1">
-              <span class="badge-skill">Python</span><span class="badge-skill">Pandas</span><span class="badge-skill">scikit-learn</span><span class="badge-skill">Matplotlib</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- House Price Predictor -->
-        <div class="col-md-6 col-lg-4 project-card" data-tags="ml">
-          <div class="card p-3 h-100">
-            <div class="small muted">Regression • Deployment</div>
-            <h3 class="h5 mt-2">House Price Predictor</h3>
-            <p class="mb-2">End-to-end regression model (e.g., <code>LinearRegression</code>) for house price prediction with a deployed demo.</p>
-            <div class="project-links d-flex gap-3">
-              <a href="https://tlonkar007.pythonanywhere.com" class="link" target="_blank" rel="noopener">Live Demo</a>
-              <a href="#" onclick="alert('TODO: Add GitHub repo link')" class="link">Code</a>
-            </div>
-            <div class="mt-2 d-flex flex-wrap gap-1">
-              <span class="badge-skill">Python</span><span class="badge-skill">scikit-learn</span><span class="badge-skill">Flask</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- GenAI Language Learning Roadmap -->
-        <div class="col-md-6 col-lg-4 project-card" data-tags="genai ml">
-          <div class="card p-3 h-100">
-            <div class="small muted">GenAI • Personalization</div>
-            <h3 class="h5 mt-2">GenAI Language Learning Roadmap</h3>
-            <p class="mb-2">Generative AI tool to create structured daily, monthly & long-term language learning plans; built with <strong>Python</strong>, <strong>Pandas</strong>, and <strong>Flask</strong>.</p>
-            <div class="project-links d-flex gap-3">
-              <a href="#" onclick="alert('TODO: Add GitHub repo link')" class="link">Code</a>
-              <a href="#" onclick="alert('TODO: Add demo link')" class="link">Demo</a>
-            </div>
-            <div class="mt-2 d-flex flex-wrap gap-1">
-              <span class="badge-skill">GenAI</span><span class="badge-skill">Python</span><span class="badge-skill">Pandas</span><span class="badge-skill">Flask</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <p class="mt-3 small muted">Tip: Add GitHub repository links for each project to improve recruiter engagement and ATS parsing.</p>
-    </div>
-  </section>
-
-  <!-- Experience -->
-  <section id="experience" class="py-5 anchor-offset">
-    <div class="container">
-      <h2 class="section-title">Professional Experience</h2>
-      <div class="row g-4">
-        <div class="col-lg-12">
-          <div class="card p-4">
+        <!-- Experience Section -->
+        <section id="experience" class="mb-5">
+            <h2 class="section-title">Professional Experience</h2>
             <div class="timeline">
-              <div class="t">
-                <div class="role">Senior Sales & Marketing Manager — Raghav Construction</div>
-                <div class="muted">June 2023 – April 2025</div>
-                <ul class="mt-2">
-                  <li>Led client acquisition and property marketing for residential & commercial projects; contributed to improved lead conversion.</li>
-                  <li>Coordinated end-to-end sales processes; reinforced data-driven decision-making through reporting and analytics.</li>
-                </ul>
-              </div>
-              <div class="t">
-                <div class="role">Sales & Marketing Executive — Aura Software Pvt. Ltd.</div>
-                <div class="muted">April 2022 – May 2023</div>
-                <ul class="mt-2">
-                  <li>Promoted software solutions to the design industry; expanded regional client base using CRM insights and analytics.</li>
-                </ul>
-              </div>
-              <div class="t">
-                <div class="role">Sales & Marketing Executive — Square Yards Pvt. Ltd.</div>
-                <div class="muted">October 2021 – April 2022</div>
-                <ul class="mt-2">
-                  <li>Managed real estate marketing, client engagement, and transaction documentation; strengthened stakeholder relationships.</li>
-                </ul>
-              </div>
-              <div class="t">
-                <div class="role">Intern — Adhyayan IT Training Placement, Pune</div>
-                <div class="muted">Internship</div>
-              </div>
+                <div class="timeline-item">
+                    <h5>Senior Sales & Marketing Manager</h5>
+                    <p class="text-muted">Raghav Construction | June 2023 – April 2025</p>
+                    <ul>
+                        <li>Managed client acquisition and property marketing for residential & commercial projects.</li>
+                        <li>Coordinated end-to-end sales processes, improving lead conversion rate.</li>
+                        <li>Applied <span class="keyword">data analysis</span> techniques to optimize marketing strategies.</li>
+                    </ul>
+                </div>
+                <div class="timeline-item">
+                    <h5>Sales & Marketing Executive</h5>
+                    <p class="text-muted">Square Yards Pvt. Ltd. | October 2021 – April 2022</p>
+                    <ul>
+                        <li>Handled real estate marketing, client engagement, and transaction documentation.</li>
+                        <li>Built strong relationships with builders and customers.</li>
+                        <li>Utilized <span class="keyword">CRM tools</span> to track and analyze customer interactions.</li>
+                    </ul>
+                </div>
+                <div class="timeline-item">
+                    <h5>Sales & Marketing Executive</h5>
+                    <p class="text-muted">Aura Software Pvt. Ltd. | April 2022 – May 2023</p>
+                    <ul>
+                        <li>Promoted software solutions to the design industry, increasing regional client base.</li>
+                        <li>Implemented <span class="keyword">data-driven marketing</span> strategies to target potential customers.</li>
+                    </ul>
+                </div>
             </div>
-            <div class="mt-3 small muted">Keywords: CRM, Funnel Analytics, Reporting, KPI Tracking, Data Storytelling, Stakeholder Communication.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+        </section>
 
-  <!-- Education -->
-  <section id="education" class="py-5 anchor-offset">
-    <div class="container">
-      <h2 class="section-title">Education</h2>
-      <div class="row g-4">
-        <div class="col-md-6">
-          <div class="card p-3 h-100">
-            <h3 class="h6 mb-1">Post Graduate Program in Data Science – Specialization in Business Analytics</h3>
-            <div class="muted">IIIT Bangalore | 2024 – 2025</div>
-            <p class="mb-1 small muted">Focus: Data Science, Business Analytics, Predictive Modeling, BI.</p>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="card p-3 h-100">
-            <h3 class="h6 mb-1">MBA – Marketing</h3>
-            <div class="muted">SVPM’s Institute of Management, SPPU Pune | 2021 – 2023</div>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="card p-3 h-100">
-            <h3 class="h6 mb-1">BBA – Business Administration</h3>
-            <div class="muted">SVPM’s CCSCE, SPPU Pune | 2017 – 2020</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact -->
-  <section id="contact" class="py-5 anchor-offset">
-    <div class="container">
-      <h2 class="section-title">Contact</h2>
-      <div class="row g-4">
-        <div class="col-lg-6">
-          <div class="card p-3 h-100">
-            <p class="mb-2">For roles in <strong>Data Science</strong>, <strong>ML/AI</strong>, and <strong>Analytics</strong>, reach out via email or LinkedIn.</p>
-            <ul class="mb-0">
-              <li>Email: <a href="mailto:tlonkar007@gmail.com">tlonkar007@gmail.com</a> <button class="btn btn-sm btn-ghost ms-2" id="copyEmail">Copy</button></li>
-              <li>Phone: <a href="tel:+919146339988">+91 9146339988</a></li>
-              <li>LinkedIn: <a href="https://www.linkedin.com/in/tarang-lonkar-2383801b2/" target="_blank" rel="noopener">linkedin.com/in/tarang-lonkar-2383801b2/</a></li>
-              <li>GitHub: <a href="https://github.com/dashboard" target="_blank" rel="noopener">github.com/dashboard</a></li>
-            </ul>
-          </div>
-        </div>
-        <div class="col-lg-6">
-          <form class="card p-3" onsubmit="return sendMessage(event)">
-            <label class="form-label" for="name">Name</label>
-            <input id="name" class="form-control mb-2" type="text" placeholder="Your full name" required>
-            <label class="form-label" for="email">Email</label>
-            <input id="email" class="form-control mb-2" type="email" placeholder="you@company.com" required>
-            <label class="form-label" for="msg">Message</label>
-            <textarea id="msg" class="form-control mb-3" rows="4" placeholder="Tell me about your role, tech stack, and timelines…" required></textarea>
-            <div class="d-flex gap-2">
-              <button class="btn btn-brand px-4" type="submit">Send</button>
-              <a class="btn btn-ghost" href="mailto:tlonkar007@gmail.com?subject=Opportunity%20for%20Data%20Science%20Role">Email Directly</a>
+        <!-- Education Section -->
+        <section id="education" class="mb-5">
+            <h2 class="section-title">Education</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-header">
+                            Post Graduate Program in Data Science
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">IIIT Bangalore</h5>
+                            <p class="card-text">2024 – 2025</p>
+                            <p>Specialization in Business Analytics</p>
+                            <p>Field of Study: <span class="keyword">Data Science</span>, <span class="keyword">Business Analytics</span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-header">
+                            MBA – Marketing
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">SVPM's Institute of Management, SPPU Pune</h5>
+                            <p class="card-text">2021 – 2023</p>
+                            <p>Specialized in <span class="keyword">Marketing Analytics</span> and <span class="keyword">Consumer Behavior</span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-header">
+                            BBA – Business Administration
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">SVPM's CCSCE, SPPU Pune</h5>
+                            <p class="card-text">2017 – 2020</p>
+                            <p>Focused on <span class="keyword">Business Intelligence</span> and <span class="keyword">Data Analysis</span></p>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <small class="muted mt-2">Form uses <span class="kbd">mailto:</span> for quick outreach. Replace with your API when deploying.</small>
-          </form>
+        </section>
+
+        <!-- Certifications Section -->
+        <section id="certifications" class="mb-5">
+            <h2 class="section-title">Certifications</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Athyayan IT Training – Data Science Program</h5>
+                            <p class="card-text">Comprehensive training in <span class="keyword">data science</span> methodologies and tools.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">PIDM – Digital Marketing</h5>
+                            <p class="card-text">Certification in <span class="keyword">digital marketing</span> strategies and analytics.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="mb-5">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Contact Information</h5>
+                            <p><i class="fas fa-phone me-2"></i> <a href="tel:9146339988">+91 9146339988</a></p>
+                            <p><i class="fas fa-envelope me-2"></i> <a href="mailto:tlonkar007@gmail.com">tlonkar007@gmail.com</a></p>
+                            <p><i class="fab fa-linkedin me-2"></i> <a href="https://www.linkedin.com/in/tarang-lonkar-2383801b2/" target="_blank">LinkedIn Profile</a></p>
+                            <p><i class="fab fa-github me-2"></i> <a href="https://github.com/dashboard" target="_blank">GitHub Profile</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Quick Contact Form</h5>
+                            <form id="contactForm">
+                                <div class="mb-3">
+                                    <input type="text" class="form-control" placeholder="Your Name" required>
+                                </div>
+                                <div class="mb-3">
+                                    <input type="email" class="form-control" placeholder="Your Email" required>
+                                </div>
+                                <div class="mb-3">
+                                    <textarea class="form-control" rows="3" placeholder="Your Message" required></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Send Message</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2023 Tarang S. Lonkar. All Rights Reserved.</p>
+            <p>Data Scientist | Machine Learning Engineer | Business Analyst</p>
+            <div class="social-icons">
+                <a href="https://www.linkedin.com/in/tarang-lonkar-2383801b2/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/dashboard" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="mailto:tlonkar007@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="tel:9146339988"><i class="fas fa-phone"></i></a>
+            </div>
         </div>
-      </div>
-    </div>
-  </section>
+    </footer>
 
-  <footer class="footer py-4">
-    <div class="container d-flex flex-wrap justify-content-between align-items-center">
-      <div class="small">© <span id="year"></span> Tarang S. Lonkar — Data Science • ML • AI</div>
-      <div class="small">Built with HTML • CSS • JS • Bootstrap</div>
-    </div>
-  </footer>
-
-  <!-- Internal JavaScript -->
-  <script>
-    // Scrollspy activation
-    const scrollSpy = new bootstrap.ScrollSpy(document.body, {
-      target: '#topnav',
-      offset: 90
-    });
-
-    // Make current nav link visibly active
-    document.querySelectorAll('#topnav .nav-link').forEach(link=>{
-      link.addEventListener('click', ()=> {
-        document.querySelectorAll('#topnav .nav-link').forEach(l=> l.classList.remove('active'));
-        link.classList.add('active');
-      });
-    });
-
-    // Year
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Project filter
-    document.querySelectorAll('[data-filter]').forEach(btn=>{
-      btn.addEventListener('click', ()=>{
-        const tag = btn.getAttribute('data-filter');
-        document.querySelectorAll('.project-card').forEach(card=>{
-          card.style.display = (tag==='all' || card.dataset.tags.includes(tag)) ? '' : 'none';
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Simple form submission handler
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! I will get back to you soon.');
+            this.reset();
         });
-        // visual cue
-        document.querySelectorAll('[data-filter]').forEach(b=>b.classList.remove('btn-brand'));
-        btn.classList.add('btn-brand');
-      });
-    });
 
-    // Copy email
-    document.getElementById('copyEmail').addEventListener('click', ()=>{
-      navigator.clipboard.writeText('tlonkar007@gmail.com').then(()=>{
-        const btn = document.getElementById('copyEmail');
-        const original = btn.textContent;
-        btn.textContent = 'Copied!';
-        setTimeout(()=> btn.textContent = original, 1200);
-      });
-    });
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
 
-    // Contact form (mailto fallback)
-    function sendMessage(e){
-      e.preventDefault();
-      const name = document.getElementById('name').value.trim();
-      const email = document.getElementById('email').value.trim();
-      const msg = document.getElementById('msg').value.trim();
-      const subject = encodeURIComponent('Opportunity for Data Science Role');
-      const body = encodeURIComponent(`Hi Tarang,%0D%0A%0D%0A` +
-        `I’d like to discuss a role in Data Science/ML/Analytics.%0D%0A%0D%0A` +
-        `Name: ${name}%0D%0AEmail: ${email}%0D%0A%0D%0A` +
-        `Details:%0D%0A${msg}%0D%0A%0D%0AThanks!`);
-      window.location.href = `mailto:tlonkar007@gmail.com?subject=${subject}&body=${body}`;
-      return false;
-    }
-
-    // Accessibility: focus outline on tab
-    function handleFirstTab(e){
-      if(e.key === 'Tab'){
-        document.body.classList.add('user-is-tabbing');
-        window.removeEventListener('keydown', handleFirstTab);
-      }
-    }
-    window.addEventListener('keydown', handleFirstTab);
-  </script>
-
-  <!-- Bootstrap JS (CDN) -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        // Placeholder for profile picture upload functionality
+        document.getElementById('profile-picture').addEventListener('click', function() {
+            // In a real implementation, this would trigger a file upload dialog
+            console.log('Profile picture click handler - would open file upload dialog');
+        });
+    </script>
 </body>
 </html>
